@@ -1,19 +1,25 @@
 import Cardapios from '../../components/Cardapios'
-import pastaBaner from '../../assets/images/pastaBanner.png'
-import { useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
+import { useEffect, useState } from 'react'
+import { Restaurant } from '../Home'
+import { useParams } from 'react-router-dom'
 
 const ItalianMenu = () => {
-    const { itensItalian } = useSelector((state: RootReducer) => state.cardapio)
+    const { id } = useParams()
+    const [restaurante, setRestaurante] = useState<Restaurant>()
+    useEffect(() => {
+        fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setRestaurante(res)
+                console.log(res)
+            })
+    }, [id])
 
-    return (
-        <Cardapios
-            itens={itensItalian}
-            nacionalidade="Italiana"
-            frase="La Dolce Vita Trattoria"
-            baner={pastaBaner}
-        />
-    )
+    if (!restaurante) {
+        return <h2>Carregando...</h2>
+    }
+
+    return <Cardapios restaurant={restaurante} />
 }
 
 export default ItalianMenu

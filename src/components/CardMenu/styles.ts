@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom'
 export const Card = styled.div`
     color: ${colors.orange};
     position: relative;
+    > img {
+        width: 100%;
+        height: 216px;
+        object-fit: cover;
+    }
 `
 export const CardInfo = styled.div`
     border: 1px solid ${colors.orange};
@@ -43,17 +48,4 @@ export const More = styled(Link)`
     padding: 4px 6px;
     font-size: 14px;
     text-decoration: none;
-`
-export const Tag = styled.div`
-    position: absolute;
-    top: 16px;
-    right: 16px;
-
-    span {
-        padding: 4px 6px;
-        background-color: ${colors.orange};
-        font-size: 14px;
-        color: ${colors.lightWithe};
-        margin-left: 8px;
-    }
 `

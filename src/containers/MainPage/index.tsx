@@ -1,35 +1,37 @@
-import { useSelector } from 'react-redux'
-
 import CardMenu from '../../components/CardMenu'
 import Header from '../../components/Header'
 import { Main, MenuList } from './styles'
-import { RootReducer } from '../../store'
+import { Restaurant } from '../../pages/Home'
 
-const MainPage = () => {
-    const { itensMain } = useSelector((state: RootReducer) => state.cardapio)
+type Props = {
+    items: Restaurant[]
+}
+
+const MainPage = ({ items }: Props) => {
     return (
         <>
             <Header change={true} />
             <Main className="container">
                 <MenuList>
-                    {itensMain.map(
+                    {items.map(
                         ({
-                            description,
+                            descricao,
                             id,
-                            image,
-                            nota,
-                            title,
-                            tag,
-                            route
+                            capa,
+                            avaliacao,
+                            titulo,
+                            tipo,
+                            destacado
                         }) => (
                             <li key={id}>
                                 <CardMenu
-                                    title={title}
-                                    description={description}
-                                    image={image}
-                                    nota={nota as string}
-                                    tag={tag as string[]}
-                                    route={route as string}
+                                    titulo={titulo}
+                                    descricao={descricao}
+                                    capa={capa}
+                                    avaliacao={avaliacao}
+                                    tipo={tipo}
+                                    destacado={destacado}
+                                    id={id}
                                 />
                             </li>
                         )

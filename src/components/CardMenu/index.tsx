@@ -1,34 +1,41 @@
-import { Card, CardInfo, More, Tag, TitleField } from './styles'
+import { Card, CardInfo, More, TitleField } from './styles'
 import star from '../../assets/images/star.png'
+import { Restaurant } from '../../pages/Home'
+import Tag from '../Tag'
 
-type Props = {
-    title: string
-    description: string
-    nota: string
-    image: string
-    tag: string[]
-    route: string
-}
-
-const CardMenu = ({ title, description, image, nota, tag, route }: Props) => {
+const CardMenu = ({
+    titulo,
+    descricao,
+    capa,
+    avaliacao,
+    tipo,
+    destacado,
+    id
+}: Restaurant) => {
     return (
         <Card>
-            <img srcSet={image} alt="" />
+            <img srcSet={capa} alt="" />
             <CardInfo>
                 <TitleField>
-                    <h3>{title}</h3>
+                    <h3>{titulo}</h3>
                     <div>
-                        {nota} <img srcSet={star} alt="" />
+                        {avaliacao} <img srcSet={star} alt="" />
                     </div>
                 </TitleField>
-                <p>{description}</p>
-                <More to={route}>Saiba mais</More>
+                <p>{descricao}</p>
+                <More to={`/cardapio/${id}`}>Saiba mais</More>
             </CardInfo>
-            <Tag>
-                {tag.map((i) => (
-                    <span key={i}>{i}</span>
-                ))}
-            </Tag>
+            {destacado ? (
+                <Tag>
+                    <>
+                        <span>Destaque da semana</span> <span>{tipo}</span>
+                    </>
+                </Tag>
+            ) : (
+                <Tag>
+                    <span>{tipo}</span>
+                </Tag>
+            )}
         </Card>
     )
 }

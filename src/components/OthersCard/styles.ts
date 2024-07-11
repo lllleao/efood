@@ -6,9 +6,12 @@ export const Card = styled.div`
     background-color: ${colors.orange};
     color: ${colors.lightWithe};
     font-size: 14px;
+    position: relative;
+    max-height: 336px;
 
     img {
         width: 100%;
+        height: 168px;
     }
 
     h3 {
@@ -19,12 +22,4 @@ export const Card = styled.div`
     p {
         margin: 8px 0;
     }
-`
-export const Button = styled.button`
-    width: 100%;
-    background-color: ${colors.lightWithe};
-    color: ${colors.orange};
-    border: none;
-    padding: 4px 0;
-    cursor: pointer;
 `

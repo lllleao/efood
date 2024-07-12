@@ -2,48 +2,65 @@ import { useState } from 'react'
 import { Restaurant } from '../../pages/Home'
 import Header from '../Header'
 import OthersCard, { formatPrice } from '../OthersCard'
-import close from '../../assets/images/close.png'
+import fechar from '../../assets/images/close.png'
 
 import { Baner, Container, ListCard, Overlay, Section } from './styles'
 import { Button } from '../../styles/global'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
     restaurant: Restaurant
 }
 
-type Modal = {
+export type Modal = {
     nome: string
     desc: string
     porcao: string
     preco: number
     foto: string
+    id: number
 }
 
 const Cardapios = ({ restaurant }: Props) => {
-    const [closeModal, setCloseModal] = useState(true)
+    const dispatch = useDispatch()
+    const [openModal, setOpenModal] = useState(true)
     const [itemAtual, setItemAual] = useState<Modal>({
         nome: '',
         desc: '',
         porcao: '',
         preco: 0,
-        foto: ''
+        foto: '',
+        id: 0
     })
 
-    const visible = (
-        nome: string,
-        desc: string,
-        porcao: string,
-        preco: number,
-        foto: string
-    ): void => {
+    const visible = ({ nome, desc, porcao, preco, foto, id }: Modal): void => {
         setItemAual({
             nome,
             desc,
             porcao,
             preco,
-            foto
+            foto,
+            id
         })
-        setCloseModal(false)
+        setOpenModal(false)
+    }
+
+    const addCart = ({ nome, desc, porcao, preco, foto, id }: Modal) => {
+        dispatch(
+            add({
+                desc,
+                foto,
+                id,
+                nome,
+                porcao,
+                preco
+            })
+        )
+
+        dispatch(open())
+
+        setOpenModal(true)
     }
 
     return (
@@ -67,20 +84,21 @@ const Cardapios = ({ restaurant }: Props) => {
                                     porcao={porcao}
                                     preco={preco}
                                     visible={() =>
-                                        visible(
+                                        visible({
                                             nome,
-                                            descricao,
+                                            desc: descricao,
                                             porcao,
                                             preco,
-                                            foto
-                                        )
+                                            foto,
+                                            id
+                                        })
                                     }
                                 />
                             </li>
                         )
                     )}
                 </ListCard>
-                <Overlay $closeModal={closeModal}>
+                <Overlay $closeModal={openModal}>
                     <div className="container">
                         <img
                             className="prato"
@@ -88,9 +106,9 @@ const Cardapios = ({ restaurant }: Props) => {
                             alt={itemAtual.nome}
                         />
                         <img
-                            onClick={() => setCloseModal(true)}
+                            onClick={() => setOpenModal(true)}
                             className="close"
-                            srcSet={close}
+                            srcSet={fechar}
                             alt=""
                         />
                         <div>
@@ -101,16 +119,13 @@ const Cardapios = ({ restaurant }: Props) => {
                                 <br />
                                 <span>Serve: {itemAtual.porcao}</span>
                             </p>
-                            <Button>
+                            <Button onClick={() => addCart(itemAtual)}>
                                 Adicionar ao carrinho -{' '}
                                 {formatPrice(itemAtual.preco)}
                             </Button>
                         </div>
                     </div>
-                    <div
-                        className="overlay"
-                        onClick={() => setCloseModal(true)}
-                    >
+                    <div className="overlay" onClick={() => setOpenModal(true)}>
                         {' '}
                     </div>
                 </Overlay>

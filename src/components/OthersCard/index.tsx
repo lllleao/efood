@@ -35,7 +35,7 @@ const OthersCard = ({
             <h3>{title}</h3>
             <p>{descSlice(description)}</p>
             <Button onClick={() => visible()} type="button">
-                Adicionar ao carrinho
+                Mais detalhes
             </Button>
             <Tag>
                 <>

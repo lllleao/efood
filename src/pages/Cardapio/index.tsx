@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Restaurant } from '../Home'
 import { useParams } from 'react-router-dom'
 
-const ItalianMenu = () => {
+const Cardapio = () => {
     const { id } = useParams()
     const [restaurante, setRestaurante] = useState<Restaurant>()
     useEffect(() => {
@@ -22,4 +22,4 @@ const ItalianMenu = () => {
     return <Cardapios restaurant={restaurante} />
 }
 
-export default ItalianMenu
+export default Cardapio

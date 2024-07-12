@@ -8,6 +8,9 @@ export const HeaderBar = styled.header`
         flex-direction: column;
         align-items: center;
         text-align: center;
+        .cart {
+            cursor: pointer;
+        }
     }
 `
 export const Title = styled.h1`

@@ -1,6 +1,8 @@
-import { Button } from '../../styles/global'
 import Tag from '../Tag'
+import { formatPrice } from '../../utils'
+
 import { Card } from './styles'
+import { Button } from '../../styles/global'
 
 type Props = {
     title: string
@@ -9,13 +11,6 @@ type Props = {
     porcao: string
     preco: number
     visible: () => void
-}
-
-export const formatPrice = (preco = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    }).format(preco)
 }
 
 const OthersCard = ({

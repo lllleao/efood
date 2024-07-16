@@ -1,44 +1,14 @@
 import styled from 'styled-components'
 import { colors } from '../../styles/global'
 
-export const CartContainer = styled.div`
-    position: fixed;
-    inset: 0;
-    display: none;
+export const CartDesc = styled.div`
+    margin-top: 24px;
 
-    &.is-open {
+    p {
         display: flex;
-    }
-
-    > div {
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-`
-
-export const SideBar = styled.aside`
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    max-width: 360px;
-    width: 100%;
-    height: 100%;
-    padding: 32px 8px 0 8px;
-    background-color: ${colors.orange};
-    font-size: 14px;
-    font-weight: bold;
-    color: ${colors.orange};
-
-    > div {
-        margin-top: 24px;
-
-        p {
-            display: flex;
-            justify-content: space-between;
-            color: ${colors.branco};
-            margin-bottom: 16px;
-        }
+        justify-content: space-between;
+        color: ${colors.withe};
+        margin-bottom: 16px;
     }
 `
 
@@ -48,6 +18,7 @@ export const CartItem = styled.li`
     padding: 12px;
     position: relative;
     margin-bottom: 16px;
+    color: ${colors.orange};
 
     .prato {
         width: 80px;
@@ -56,9 +27,11 @@ export const CartItem = styled.li`
         margin-right: 8px;
     }
 
-    h3 {
-        font-size: 18px;
-        margin-bottom: 16px;
+    > div {
+        h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
     }
 
     p {

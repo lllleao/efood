@@ -1,7 +1,6 @@
-import { Card, CardInfo, More, TitleField } from './styles'
-import star from '../../assets/images/star.png'
-import { Restaurant } from '../../pages/Home'
 import Tag from '../Tag'
+import star from '../../assets/images/star.png'
+import * as S from './styles'
 
 const CardMenu = ({
     titulo,
@@ -13,18 +12,18 @@ const CardMenu = ({
     id
 }: Restaurant) => {
     return (
-        <Card>
+        <S.Card>
             <img srcSet={capa} alt="" />
-            <CardInfo>
-                <TitleField>
+            <S.CardInfo>
+                <S.TitleField>
                     <h3>{titulo}</h3>
                     <div>
                         {avaliacao} <img srcSet={star} alt="" />
                     </div>
-                </TitleField>
+                </S.TitleField>
                 <p>{descricao}</p>
-                <More to={`/cardapio/${id}`}>Saiba mais</More>
-            </CardInfo>
+                <S.More to={`/cardapio/${id}`}>Saiba mais</S.More>
+            </S.CardInfo>
             {destacado ? (
                 <Tag>
                     <>
@@ -36,7 +35,7 @@ const CardMenu = ({
                     <span>{tipo}</span>
                 </Tag>
             )}
-        </Card>
+        </S.Card>
     )
 }
 

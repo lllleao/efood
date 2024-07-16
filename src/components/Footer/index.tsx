@@ -1,12 +1,12 @@
 import backFooter from '../../assets/images/Vector.png'
 import logo from '../../assets/images/logo.png'
-import { FooterBar, SocialLinks } from './styles'
+import * as S from './styles'
 
 const Footer = () => {
     return (
-        <FooterBar style={{ backgroundImage: `url(${backFooter})` }}>
+        <S.FooterBar style={{ backgroundImage: `url(${backFooter})` }}>
             <img src={logo} alt="" />
-            <SocialLinks>
+            <S.SocialLinks>
                 <li>
                     <i className="fa-brands fa-instagram"></i>
                 </li>
@@ -16,13 +16,13 @@ const Footer = () => {
                 <li>
                     <i className="fa-brands fa-twitter"></i>
                 </li>
-            </SocialLinks>
+            </S.SocialLinks>
             <p>
                 A efood é uma plataforma para divulgação de estabelecimentos, a
                 responsabilidade pela entrega, qualidade <br /> dos produtos é
                 toda do estabelecimento contratado.{' '}
             </p>
-        </FooterBar>
+        </S.FooterBar>
     )
 }
 

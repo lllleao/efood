@@ -60,7 +60,7 @@ export const Overlay = styled.div<Props>`
     position: fixed;
     inset: 0;
     font-size: 18px;
-    color: ${colors.branco};
+    color: ${colors.withe};
 
     .overlay {
         position: fixed;

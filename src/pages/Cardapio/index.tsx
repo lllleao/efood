@@ -1,7 +1,7 @@
-import Cardapios from '../../components/Cardapios'
 import { useEffect, useState } from 'react'
-import { Restaurant } from '../Home'
 import { useParams } from 'react-router-dom'
+
+import Cardapios from '../../components/Cardapios'
 
 const Cardapio = () => {
     const { id } = useParams()
@@ -11,7 +11,6 @@ const Cardapio = () => {
             .then((res) => res.json())
             .then((res) => {
                 setRestaurante(res)
-                console.log(res)
             })
     }, [id])
 

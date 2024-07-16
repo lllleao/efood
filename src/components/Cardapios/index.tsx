@@ -1,25 +1,18 @@
 import { useState } from 'react'
-import { Restaurant } from '../../pages/Home'
-import Header from '../Header'
-import OthersCard, { formatPrice } from '../OthersCard'
-import fechar from '../../assets/images/close.png'
-
-import { Baner, Container, ListCard, Overlay, Section } from './styles'
-import { Button } from '../../styles/global'
 import { useDispatch } from 'react-redux'
+
 import { add, open } from '../../store/reducers/cart'
+import { formatPrice } from '../../utils'
+
+import OthersCard from '../OthersCard'
+import Header from '../Header'
+
+import fechar from '../../assets/images/close.png'
+import * as S from './styles'
+import { Button } from '../../styles/global'
 
 type Props = {
     restaurant: Restaurant
-}
-
-export type Modal = {
-    nome: string
-    desc: string
-    porcao: string
-    preco: number
-    foto: string
-    id: number
 }
 
 const Cardapios = ({ restaurant }: Props) => {
@@ -64,16 +57,16 @@ const Cardapios = ({ restaurant }: Props) => {
     }
 
     return (
-        <Section>
+        <S.Section>
             <Header change={false} />
-            <Baner style={{ backgroundImage: `url(${restaurant.capa})` }}>
+            <S.Baner style={{ backgroundImage: `url(${restaurant.capa})` }}>
                 <div className="container">
                     <p>{restaurant.tipo}</p>
                     <h2>{restaurant.titulo}</h2>
                 </div>
-            </Baner>
-            <Container className="container">
-                <ListCard>
+            </S.Baner>
+            <S.Container className="container">
+                <S.ListCard>
                     {restaurant.cardapio?.map(
                         ({ nome, descricao, id, foto, porcao, preco }) => (
                             <li key={id}>
@@ -97,8 +90,8 @@ const Cardapios = ({ restaurant }: Props) => {
                             </li>
                         )
                     )}
-                </ListCard>
-                <Overlay $closeModal={openModal}>
+                </S.ListCard>
+                <S.Overlay $closeModal={openModal}>
                     <div className="container">
                         <img
                             className="prato"
@@ -128,9 +121,9 @@ const Cardapios = ({ restaurant }: Props) => {
                     <div className="overlay" onClick={() => setOpenModal(true)}>
                         {' '}
                     </div>
-                </Overlay>
-            </Container>
-        </Section>
+                </S.Overlay>
+            </S.Container>
+        </S.Section>
     )
 }
 

@@ -1,7 +1,6 @@
 import CardMenu from '../../components/CardMenu'
 import Header from '../../components/Header'
-import { Main, MenuList } from './styles'
-import { Restaurant } from '../../pages/Home'
+import * as S from './styles'
 
 type Props = {
     items: Restaurant[]
@@ -11,8 +10,8 @@ const MainPage = ({ items }: Props) => {
     return (
         <>
             <Header change={true} />
-            <Main className="container">
-                <MenuList>
+            <S.Main className="container">
+                <S.MenuList>
                     {items.map(
                         ({
                             descricao,
@@ -36,8 +35,8 @@ const MainPage = ({ items }: Props) => {
                             </li>
                         )
                     )}
-                </MenuList>
-            </Main>
+                </S.MenuList>
+            </S.Main>
         </>
     )
 }

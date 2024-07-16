@@ -18,8 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 export const colors = {
     withe: '#fff',
     orange: '#e66767',
-    lightWithe: '#ffebd9',
-    branco: '#fff'
+    lightWithe: '#ffebd9'
 }
 
 export const Button = styled.button`

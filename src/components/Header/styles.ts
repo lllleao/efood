@@ -12,9 +12,15 @@ export const HeaderBar = styled.header`
             cursor: pointer;
         }
     }
+    p {
+        margin: 0 18px;
+    }
+    @media (max-width: 1040px) {
+        padding: 20px 0;
+    }
 `
 export const Title = styled.h1`
-    font-size: 36px;
+    font-size: clamp(18px, 4vw, 36px);
     color: ${colors.orange};
     margin-top: 136px;
 `

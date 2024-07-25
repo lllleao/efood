@@ -8,4 +8,9 @@ export const MenuList = styled.ul`
     grid-template-columns: 1fr 1fr;
     column-gap: 80px;
     row-gap: 48px;
+    @media (max-width: 1040px) {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin: 0 auto;
+    }
 `

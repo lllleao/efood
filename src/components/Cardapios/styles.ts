@@ -18,6 +18,10 @@ export const Section = styled.section`
                 font-weight: bold;
                 color: ${colors.orange};
             }
+            @media (max-width: 400px) {
+                flex-direction: column;
+                row-gap: 12px;
+            }
         }
     }
 `
@@ -40,6 +44,15 @@ export const Baner = styled.div`
             font-weight: 100;
             margin-bottom: 152px;
         }
+        h2 {
+            font-size: clamp(1em, 4vw, 1.5em);
+        }
+        @media (max-width: 1040px) {
+            p,
+            h2 {
+                margin-left: 18px;
+            }
+        }
     }
 
     &::before {
@@ -53,6 +66,16 @@ export const ListCard = styled.ul`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
+    @media (max-width: 1040px) {
+        grid-template-columns: 1fr 1fr;
+        width: 90%;
+        margin: 0 auto;
+    }
+    @media (max-width: 712px) {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin: 0 auto;
+    }
 `
 export const Overlay = styled.div<Props>`
     display: ${({ $closeModal }) => ($closeModal ? 'none' : 'flex')};
@@ -91,6 +114,15 @@ export const Overlay = styled.div<Props>`
             top: 8px;
             right: 8px;
             cursor: pointer;
+        }
+
+        @media (max-width: 1040px) {
+            .prato {
+                margin-bottom: 16px;
+            }
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
         }
     }
 

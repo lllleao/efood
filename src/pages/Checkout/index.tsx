@@ -87,8 +87,23 @@ const Checkout = ({ backBuy }: Props) => {
         return hasError
     }
 
+    const getValide = () => {
+        const teste1 =
+            form.values.address !== '' && form.values.address.length >= 5
+        const teste2 = form.values.cep !== '' && form.values.cep.length >= 8
+        const teste3 = form.values.city !== '' && form.values.city.length >= 3
+        const teste4 = form.values.more !== '' && form.values.more.length >= 5
+        const teste5 =
+            form.values.numberHouse !== '' &&
+            form.values.numberHouse.length >= 1
+        const teste6 =
+            form.values.receiver !== '' && form.values.receiver.length >= 5
+        if (teste1 && teste2 && teste3 && teste4 && teste5 && teste6) {
+            setContinueBuy(false)
+        }
+    }
+
     if (isSuccess && data) {
-        console.log(data)
         return <PurchaseComfirm backBuy={backBuy} orderId={data.orderId} />
     }
 
@@ -171,9 +186,10 @@ const Checkout = ({ backBuy }: Props) => {
                         />
                     </S.InputField>
                     <Button
-                        onClick={() => setContinueBuy(false)}
+                        onClick={getValide}
                         type="button"
                         className="continue"
+                        onSubmit={() => form.handleSubmit}
                     >
                         Continuar com o pagamento
                     </Button>

@@ -8,10 +8,8 @@ const Home = () => {
             .then((res) => res.json())
             .then((res) => {
                 setRestaurante(res)
-                console.log(res)
             })
     }, [])
-    console.log()
     return <MainPage items={restaurante} />
 }
 export default Home
